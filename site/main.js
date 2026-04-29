@@ -56,29 +56,58 @@ if ('IntersectionObserver' in window && fadeEls.length) {
   fadeEls.forEach(el => el.classList.add('visible'));
 }
 
-// --- CONTACT FORM: basic validation ---
+// --- CONTACT FORM: submit to API ---
 const form = document.getElementById('contactForm');
 if (form) {
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name = form.querySelector('#name').value.trim();
-    const email = form.querySelector('#email').value.trim();
+
+    const name    = form.querySelector('#name').value.trim();
+    const email   = form.querySelector('#email').value.trim();
+    const company = form.querySelector('#company').value.trim();
     const message = form.querySelector('#message').value.trim();
 
-    if (!name || !email || !message) {
+    if (!name || !email || !company || !message) {
       alert('Please fill in all required fields.');
       return;
     }
 
-    // Simulate submission
     const btn = form.querySelector('button[type="submit"]');
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    setTimeout(() => {
-      btn.textContent = 'Message Sent ✓';
-      form.reset();
-    }, 1200);
+    const payload = {
+      name,
+      email,
+      title:    form.querySelector('#title').value.trim(),
+      phone:    form.querySelector('#phone').value.trim(),
+      company,
+      sector:   form.querySelector('#sector').value,
+      interest: form.querySelector('#interest').value,
+      message,
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        btn.textContent = 'Request Submitted ✓';
+        form.reset();
+      } else {
+        const err = await res.json().catch(() => ({}));
+        btn.textContent = 'Submit Consultation Request';
+        btn.disabled = false;
+        alert(err.error || 'Submission failed. Please try again.');
+      }
+    } catch {
+      btn.textContent = 'Submit Consultation Request';
+      btn.disabled = false;
+      alert('Network error. Please check your connection and try again.');
+    }
   });
 }
 
