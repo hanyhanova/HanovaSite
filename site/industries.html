@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Industries served by Hanova Consultancy — Healthcare, Financial Services, Government, Retail, Logistics, Manufacturing, and Technology." />
+  <title>Industries — Hanova Consultancy</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-inner container">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">H</span>
+        <span class="logo-text">HANOVA <span class="logo-sub">CONSULTANCY</span></span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="industries.html" class="active">Industries</a></li>
+        <li><a href="workshops.html">Workshops</a></li>
+        <li><a href="impact.html">Impact</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Consultation</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-hero-eyebrow">Sectors</span>
+      <h1>Industries We Serve</h1>
+      <p>Hanova brings sector-specific expertise to every engagement — understanding the regulatory environment, competitive dynamics, and operational complexity unique to each industry we serve.</p>
+    </div>
+  </section>
+
+  <section class="industries-detail section-padding">
+    <div class="container">
+      <div class="industry-grid">
+
+        <div class="industry-card fade-up" id="healthcare">
+          <span class="industry-icon">⊕</span>
+          <h3>Healthcare &amp; Life Sciences</h3>
+          <p>Our deepest domain expertise. Hanova has led transformation programs across hospital networks, specialty clinics, health authorities, and digital health ventures — spanning operational redesign, revenue cycle optimization, clinical quality improvement, and full-scale digital transformation.</p>
+          <p style="margin-top:12px; font-size:13px; color: var(--text-muted);">Regulatory fluency: JCI · CBAHI · NDMO · PDPL · MOH Saudi Arabia · JAWDA</p>
+        </div>
+
+        <div class="industry-card fade-up" id="finance">
+          <span class="industry-icon">◈</span>
+          <h3>Financial Services &amp; Insurance</h3>
+          <p>We support banks, insurance companies, investment firms, and fintech ventures in navigating regulatory complexity, digital transformation, and operational scale. Our work spans SAMA compliance readiness, digital channel strategy, operational risk governance, and financial analytics infrastructure.</p>
+          <p style="margin-top:12px; font-size:13px; color: var(--text-muted);">Regulatory fluency: SAMA · CMA · IFRS · Open Banking · AML frameworks</p>
+        </div>
+
+        <div class="industry-card fade-up" id="government">
+          <span class="industry-icon">◉</span>
+          <h3>Government &amp; Public Sector</h3>
+          <p>We partner with government ministries, regulatory authorities, and public sector entities to design and execute Vision 2030-aligned transformation programs — covering organizational restructuring, service delivery modernization, digital government enablement, and performance governance frameworks.</p>
+          <p style="margin-top:12px; font-size:13px; color: var(--text-muted);">Alignment: Vision 2030 · NTP · NDMO · Government Excellence System</p>
+        </div>
+
+        <div class="industry-card fade-up" id="retail">
+          <span class="industry-icon">◎</span>
+          <h3>Retail &amp; E-Commerce</h3>
+          <p>From omnichannel strategy to supply chain optimization and customer experience redesign, Hanova helps retail and e-commerce businesses build the operational infrastructure and data capabilities required to compete in a rapidly evolving digital marketplace — with a focus on profitability governance and customer lifetime value.</p>
+          <p style="margin-top:12px; font-size:13px; color: var(--text-muted);">Focus areas: CX strategy · Supply chain · Digital commerce · Loyalty economics</p>
+        </div>
+
+        <div class="industry-card fade-up" id="logistics">
+          <span class="industry-icon">◆</span>
+          <h3>Logistics &amp; Supply Chain</h3>
+          <p>We work with logistics operators, freight companies, and supply chain functions to optimize network design, warehouse operations, last-mile efficiency, and technology enablement. Our engagements are anchored in operational KPIs — cost per unit, on-time delivery, asset utilization, and inventory turnover — with continuous improvement governance built in.</p>
+          <p style="margin-top:12px; font-size:13px; color: var(--text-muted);">Focus areas: Network optimization · WMS · Fleet analytics · Demand planning</p>
+        </div>
+
+        <div class="industry-card fade-up" id="manufacturing">
+          <span class="industry-icon">⊗</span>
+          <h3>Manufacturing</h3>
+          <p>For manufacturing enterprises navigating production complexity, quality management, and Industry 4.0 adoption, Hanova provides operational excellence programs, digital factory roadmaps, and performance governance frameworks that translate factory-floor improvements into board-level financial outcomes.</p>
+          <p style="margin-top:12px; font-size:13px; color: var(--text-muted);">Focus areas: OEE improvement · Quality systems · Industry 4.0 · ERP optimization</p>
+        </div>
+
+        <div class="industry-card fade-up" id="technology">
+          <span class="industry-icon">⊙</span>
+          <h3>Technology &amp; Startups</h3>
+          <p>High-growth technology companies and funded startups face a distinct class of organizational challenge: scaling operations, governance, and infrastructure at the speed of commercial growth. Hanova brings senior advisory to technology leaders navigating rapid scaling, operational professionalization, and the transition from founder-led to institution-grade organizations.</p>
+          <p style="margin-top:12px; font-size:13px; color: var(--text-muted);">Focus areas: Scaling frameworks · Go-to-market · Operational maturity · Board governance</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container centered fade-up">
+      <h2>Don't see your sector listed?</h2>
+      <p>Our frameworks are designed to be sector-agnostic in their rigor, even when sector-specific in their application. Contact us to discuss your industry context.</p>
+      <a href="contact.html" class="btn btn-primary btn-lg">Start the Conversation</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-mark">H</span>
+            <span class="logo-text">HANOVA <span class="logo-sub">CONSULTANCY</span></span>
+          </a>
+          <p class="footer-tagline">From Strategy to Measurable Impact</p>
+          <p class="footer-location">Riyadh, Saudi Arabia</p>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-col">
+            <h5>Practice</h5>
+            <ul>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="industries.html">Industries</a></li>
+              <li><a href="workshops.html">Workshops</a></li>
+              <li><a href="impact.html">Impact Cases</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Firm</h5>
+            <ul>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Hanova Consultancy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

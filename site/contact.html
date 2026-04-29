@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Hanova Consultancy — Request a consultation with our senior advisory team. Riyadh, Saudi Arabia." />
+  <title>Contact — Hanova Consultancy</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Contact-page specific overrides */
+    .contact-page-hero {
+      background: var(--navy);
+      padding: 160px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 80% at 100% 0%, rgba(26,51,84,0.9) 0%, transparent 60%);
+    }
+    .contact-page-hero .container { position: relative; z-index: 2; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-inner container">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">H</span>
+        <span class="logo-text">HANOVA <span class="logo-sub">CONSULTANCY</span></span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="industries.html">Industries</a></li>
+        <li><a href="workshops.html">Workshops</a></li>
+        <li><a href="impact.html">Impact</a></li>
+        <li><a href="contact.html" class="nav-cta active">Request Consultation</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="contact-page-hero">
+    <div class="container">
+      <span class="page-hero-eyebrow">Get in Touch</span>
+      <h1 style="font-family: var(--ff-display); font-size: clamp(40px,6vw,72px); font-weight:400; color:var(--white); line-height:1.05; letter-spacing:-0.01em;">
+        Let's discuss your<br/>organization's mandate.
+      </h1>
+      <p style="color:rgba(255,255,255,0.6); max-width:520px; font-size:clamp(16px,2vw,18px); margin-top:20px; line-height:1.7;">
+        A focused, senior-led conversation about your most pressing transformation challenge. No intake queues. No junior staff. Direct access to Hanova's principal advisory team.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT LAYOUT -->
+  <section class="contact-layout">
+    <div class="container contact-grid">
+
+      <!-- INFO COLUMN -->
+      <div class="contact-info fade-up">
+        <div class="section-eyebrow">Hanova Consultancy</div>
+        <h2 class="section-headline">We respond within<br/>one business day.</h2>
+
+        <div class="contact-detail">
+          <div class="contact-item">
+            <span class="contact-item-label">Location</span>
+            <span class="contact-item-value">Riyadh, Saudi Arabia</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Engagements</span>
+            <span class="contact-item-value">KSA · GCC · Regional</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Languages</span>
+            <span class="contact-item-value">Arabic · English</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Workshop Bookings</span>
+            <span class="contact-item-value">Available on request</span>
+          </div>
+        </div>
+
+        <div style="margin-top:48px; padding-top:40px; border-top:1px solid var(--border);">
+          <p style="font-size:13px; color:var(--text-muted); line-height:1.7; margin:0;">
+            All consultation requests are handled directly by Hanova's senior principals. We do not route inquiries through business development staff or junior associates. What you communicate in this form is what we will discuss.
+          </p>
+        </div>
+      </div>
+
+      <!-- FORM COLUMN -->
+      <div class="fade-up">
+        <form class="contact-form" id="contactForm" novalidate>
+          <div style="margin-bottom:28px;">
+            <p style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-muted); margin:0 0 4px;">Request a Consultation</p>
+            <p style="font-size:14px; color:var(--text-body); margin:0;">Tell us about your organization and the challenge you're working on. The more context you share, the more valuable our first conversation will be.</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="title">Position / Title</label>
+              <input type="text" id="title" name="title" placeholder="CEO, COO, etc." autocomplete="organization-title" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="your@company.com" required autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone (Optional)</label>
+              <input type="tel" id="phone" name="phone" placeholder="+966 xx xxx xxxx" autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="company">Organization *</label>
+            <input type="text" id="company" name="company" placeholder="Organization name" required autocomplete="organization" />
+          </div>
+
+          <div class="form-group">
+            <label for="sector">Sector</label>
+            <select id="sector" name="sector">
+              <option value="" disabled selected>Select your sector</option>
+              <option>Healthcare &amp; Life Sciences</option>
+              <option>Financial Services &amp; Insurance</option>
+              <option>Government &amp; Public Sector</option>
+              <option>Retail &amp; E-Commerce</option>
+              <option>Logistics &amp; Supply Chain</option>
+              <option>Manufacturing</option>
+              <option>Technology &amp; Startups</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="interest">Area of Interest</label>
+            <select id="interest" name="interest">
+              <option value="" disabled selected>What are you looking for?</option>
+              <option>Strategy &amp; Transformation Advisory</option>
+              <option>Operations &amp; Revenue Optimization</option>
+              <option>Data &amp; Business Intelligence</option>
+              <option>Digital Transformation</option>
+              <option>Executive Workshop</option>
+              <option>Integration &amp; Interoperability</option>
+              <option>Custom Digital Solution</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Challenge *</label>
+            <textarea id="message" name="message" placeholder="Briefly describe your organization's challenge, the transformation mandate you are working on, or the question you would like to discuss. There is no minimum length — clarity is more valuable than completeness at this stage." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+            Submit Consultation Request
+          </button>
+
+          <p class="form-note">Your information is handled with strict confidentiality. We do not share client details with third parties under any circumstances. All responses come directly from Hanova's senior advisory team.</p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHAT TO EXPECT -->
+  <section class="section-padding bg-light">
+    <div class="container">
+      <div class="section-header centered fade-up">
+        <div class="section-eyebrow">What Happens Next</div>
+        <h2 class="section-headline">Our process, from first contact.</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; max-width:900px; margin:0 auto;">
+        <div style="padding:40px 32px; border:1px solid var(--border); background:var(--white);" class="fade-up">
+          <div style="font-family:var(--ff-display); font-size:40px; color:var(--light-gray); margin-bottom:16px;">01</div>
+          <h4 style="margin-bottom:10px;">Senior Review</h4>
+          <p style="font-size:14px; margin:0;">A Hanova principal reviews your inquiry within one business day and prepares a focused response — not a template, not a brochure.</p>
+        </div>
+        <div style="padding:40px 32px; border:1px solid var(--border); background:var(--white);" class="fade-up">
+          <div style="font-family:var(--ff-display); font-size:40px; color:var(--light-gray); margin-bottom:16px;">02</div>
+          <h4 style="margin-bottom:10px;">Discovery Call</h4>
+          <p style="font-size:14px; margin:0;">A focused 45–60 minute conversation to understand your specific context, constraints, and the mandate you are working against.</p>
+        </div>
+        <div style="padding:40px 32px; border:1px solid var(--border); background:var(--white);" class="fade-up">
+          <div style="font-family:var(--ff-display); font-size:40px; color:var(--light-gray); margin-bottom:16px;">03</div>
+          <h4 style="margin-bottom:10px;">Engagement Proposal</h4>
+          <p style="font-size:14px; margin:0;">If there is a fit, Hanova will provide a precise scope of work — with defined deliverables, governance milestones, and measurable outcome commitments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-mark">H</span>
+            <span class="logo-text">HANOVA <span class="logo-sub">CONSULTANCY</span></span>
+          </a>
+          <p class="footer-tagline">From Strategy to Measurable Impact</p>
+          <p class="footer-location">Riyadh, Saudi Arabia</p>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-col">
+            <h5>Practice</h5>
+            <ul>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="industries.html">Industries</a></li>
+              <li><a href="workshops.html">Workshops</a></li>
+              <li><a href="impact.html">Impact Cases</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Firm</h5>
+            <ul>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Hanova Consultancy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
