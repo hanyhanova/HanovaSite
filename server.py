@@ -1,5 +1,8 @@
 import os
 import re
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import psycopg2
@@ -42,6 +45,48 @@ def init_db():
 
 
 init_db()
+
+NOTIFY_TO   = "ahmedhany@hanova.info"
+SMTP_HOST   = os.environ.get("SMTP_HOST", "smtp.gmail.com")
+SMTP_PORT   = int(os.environ.get("SMTP_PORT", 587))
+SMTP_USER   = os.environ.get("SMTP_USER", "")
+SMTP_PASS   = os.environ.get("SMTP_PASS", "")
+
+
+def send_notification(submission: dict):
+    if not SMTP_USER or not SMTP_PASS:
+        app.logger.warning("SMTP credentials not configured – skipping email.")
+        return
+
+    body = (
+        f"New consultation request received on Hanova.info\n"
+        f"{'=' * 48}\n"
+        f"Name:     {submission['name']}\n"
+        f"Email:    {submission['email']}\n"
+        f"Title:    {submission.get('title') or '—'}\n"
+        f"Phone:    {submission.get('phone') or '—'}\n"
+        f"Company:  {submission['company']}\n"
+        f"Sector:   {submission.get('sector') or '—'}\n"
+        f"Interest: {submission.get('interest') or '—'}\n"
+        f"{'=' * 48}\n"
+        f"Message:\n{submission['message']}\n"
+    )
+
+    msg = MIMEMultipart()
+    msg["From"]    = SMTP_USER
+    msg["To"]      = NOTIFY_TO
+    msg["Subject"] = f"[Hanova] New enquiry from {submission['name']} – {submission['company']}"
+    msg.attach(MIMEText(body, "plain"))
+
+    try:
+        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
+            server.ehlo()
+            server.starttls()
+            server.login(SMTP_USER, SMTP_PASS)
+            server.sendmail(SMTP_USER, NOTIFY_TO, msg.as_string())
+    except Exception as exc:
+        app.logger.error("Email error: %s", exc)
+
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
@@ -87,6 +132,12 @@ def contact():
     except Exception as exc:
         app.logger.error("DB error: %s", exc)
         return jsonify({"error": "Could not save submission. Please try again later."}), 500
+
+    send_notification({
+        "name": name, "email": email, "title": title,
+        "phone": phone, "company": company, "sector": sector,
+        "interest": interest, "message": message,
+    })
 
     return jsonify({"ok": True, "id": row["id"]}), 201
 
