@@ -1,8 +1,6 @@
 import os
 import re
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import resend
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import psycopg2
@@ -46,17 +44,16 @@ def init_db():
 
 init_db()
 
-NOTIFY_TO   = "ahmedhany@hanova.info"
-SMTP_HOST   = os.environ.get("SMTP_HOST", "smtp.gmail.com")
-SMTP_PORT   = int(os.environ.get("SMTP_PORT", 587))
-SMTP_USER   = os.environ.get("SMTP_USER", "")
-SMTP_PASS   = os.environ.get("SMTP_PASS", "")
+NOTIFY_TO  = "ahmedhany@hanova.info"
+RESEND_KEY = os.environ.get("RESEND_API_KEY", "")
 
 
 def send_notification(submission: dict):
-    if not SMTP_USER or not SMTP_PASS:
-        app.logger.warning("SMTP credentials not configured – skipping email.")
+    if not RESEND_KEY:
+        app.logger.warning("RESEND_API_KEY not configured – skipping email.")
         return
+
+    resend.api_key = RESEND_KEY
 
     body = (
         f"New consultation request received on Hanova.info\n"
@@ -72,18 +69,13 @@ def send_notification(submission: dict):
         f"Message:\n{submission['message']}\n"
     )
 
-    msg = MIMEMultipart()
-    msg["From"]    = SMTP_USER
-    msg["To"]      = NOTIFY_TO
-    msg["Subject"] = f"[Hanova] New enquiry from {submission['name']} – {submission['company']}"
-    msg.attach(MIMEText(body, "plain"))
-
     try:
-        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
-            server.ehlo()
-            server.starttls()
-            server.login(SMTP_USER, SMTP_PASS)
-            server.sendmail(SMTP_USER, NOTIFY_TO, msg.as_string())
+        resend.Emails.send({
+            "from": "Hanova Contact <no-reply@hanova.info>",
+            "to": NOTIFY_TO,
+            "subject": f"[Hanova] New enquiry from {submission['name']} – {submission['company']}",
+            "text": body,
+        })
     except BaseException as exc:
         app.logger.error("Email error: %s", exc)
 
