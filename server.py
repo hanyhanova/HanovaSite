@@ -84,7 +84,7 @@ def send_notification(submission: dict):
             server.starttls()
             server.login(SMTP_USER, SMTP_PASS)
             server.sendmail(SMTP_USER, NOTIFY_TO, msg.as_string())
-    except Exception as exc:
+    except BaseException as exc:
         app.logger.error("Email error: %s", exc)
 
 
@@ -133,11 +133,14 @@ def contact():
         app.logger.error("DB error: %s", exc)
         return jsonify({"error": "Could not save submission. Please try again later."}), 500
 
-    send_notification({
-        "name": name, "email": email, "title": title,
-        "phone": phone, "company": company, "sector": sector,
-        "interest": interest, "message": message,
-    })
+    try:
+        send_notification({
+            "name": name, "email": email, "title": title,
+            "phone": phone, "company": company, "sector": sector,
+            "interest": interest, "message": message,
+        })
+    except BaseException as exc:
+        app.logger.error("Unhandled email error: %s", exc)
 
     return jsonify({"ok": True, "id": row["id"]}), 201
 
